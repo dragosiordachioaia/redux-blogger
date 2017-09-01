@@ -1,29 +1,29 @@
-import * from 'action-types';
+import * as actions from './action-types.js';
 
-export default function addPost(post) {
+export function addPost(post) {
   return {
-    type: ADD_POST,
+    type: actions.ADD_POST,
     payload: post,
   }
 }
 
-export default function addPost(postId) {
+export function deletePost(postId) {
   return {
-    type: ADD_POST,
+    type: actions.DELETE_POST,
     payload: postId,
   }
 }
 
-export default function viewPost(postId) {
+export function viewPost(postId) {
   return {
-    type: ADD_POST,
+    type: actions.VIEW_POST,
     payload: postId,
   }
 }
 
-export default function updatePost(postID, newValue) {
+export function updatePost(postID, newValue) {
   return {
-    type: ADD_POST,
+    type: actions.UPDATE_POST,
     payload: {
       postID,
       newValue

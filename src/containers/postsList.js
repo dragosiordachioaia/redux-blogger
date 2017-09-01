@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import * as actions from '../actions/post-actions';
 
-class PostsList extends Component {
+export default class PostsList extends Component {
   render() {
     return (
       <p>Posts list! </p>
@@ -17,7 +18,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addPost: addPost }, dispatch);
+  return bindActionCreators({ addPost: actions.addPost }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostsList);
+// export default connect(mapStateToProps, mapDispatchToProps)(PostsList);
