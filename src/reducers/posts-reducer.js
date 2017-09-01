@@ -1,8 +1,8 @@
 import * as actions from '../actions/action-types';
 
-export default (state = [], action) {
+export default function PostsReducer(state = [], action) {
   switch(action.type) {
-    case ADD_POST:
+    case actions.ADD_POST:
       return state.concat(action.payload);
     default:
       return state;
