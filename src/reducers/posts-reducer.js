@@ -1,5 +1,7 @@
 import * as actions from '../actions/action-types';
 
+let crtPostIndex = 100;
+
 export default function PostsReducer(state, action) {
   if(!state) {
     state = [{
@@ -18,16 +20,11 @@ export default function PostsReducer(state, action) {
   }
   switch(action.type) {
     case actions.ADD_POST:
-      let lastPostID;
-      if(state.length > 0) {
-        lastPostID = state[state.length - 1].id;
-      } else {
-        lastPostID = 0;
-      }
+      crtPostIndex++;
       const newPost = {
         title: action.payload.title,
         content: action.payload.content,
-        id: lastPostID + 1
+        id: crtPostIndex,
       }
       return state.concat(newPost);
     case actions.DELETE_POST:

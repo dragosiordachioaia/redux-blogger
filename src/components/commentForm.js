@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 
-export default class NewPostForm extends Component{
+export default class CommentForm extends Component{
   constructor() {
     super();
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      title: "first title",
-      content: "lorem ipsum dolor",
+      title: "good stuff, dude",
+      content: "more details about why it's good",
+      author: 'Dragos',
     }
   }
 
   onSubmit(event) {
     event.preventDefault();
-    
+
     if(this.state.title.length === 0 || this.state.content.length === 0)  {
       return;
     }
@@ -20,6 +21,7 @@ export default class NewPostForm extends Component{
     this.props.onSubmit({
       title: this.state.title,
       content: this.state.content,
+      author: this.state.author
     });
     this.setState({
       title: "",
@@ -36,13 +38,22 @@ export default class NewPostForm extends Component{
           onChange={(event) => this.setState({title: event.target.value})}
           placeholder="Post title here"
         />
-        <input
+        <br />
+        <textarea
           type="text"
           value={this.state.content}
           onChange={(event) => this.setState({content: event.target.value})}
           placeholder="Post content here"
         />
-        <button type="submit">Create Post</button>
+        <br />
+        <input
+          type="text"
+          value={this.state.author}
+          onChange={(event) => this.setState({author: event.target.value})}
+          placeholder="Your name here"
+        />
+        <br />
+        <button type="submit">Submit Comment</button>
       </form>
     );
   }

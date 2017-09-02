@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../actions/post-actions';
+import * as actions from '../actions/actions';
 
-import NewPostForm from '../components/newPostForm';
+import PostForm from '../components/postForm';
 import PostItem from '../components/postItem';
 
 class PostsList extends Component {
@@ -11,7 +11,6 @@ class PostsList extends Component {
     super();
     this.displayPostsList = this.displayPostsList.bind(this);
     this.deletePost = this.deletePost.bind(this);
-    this.viewPost = this.viewPost.bind(this);
   }
 
   displayPostsList(posts) {
@@ -21,13 +20,8 @@ class PostsList extends Component {
           post={post}
           key={post.title}
           deletePost={this.deletePost}
-          viewPost={this.viewPost}
         />
     );
-  }
-
-  viewPost(postId) {
-    console.log('PostsList::viewPost() postId = ', postId);
   }
 
   deletePost(postID) {
@@ -43,7 +37,7 @@ class PostsList extends Component {
     }
     return (
       <div>
-        <NewPostForm
+        <PostForm
           onSubmit={this.props.addPost}
         />
         {list}

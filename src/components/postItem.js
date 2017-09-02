@@ -14,7 +14,6 @@ export default class PostItem extends Component {
 
   onTitleClick(event) {
     event.preventDefault();
-    this.props.viewPost(this.props.post.id);
   }
 
   render() {

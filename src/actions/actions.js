@@ -14,13 +14,6 @@ export function deletePost(postId) {
   }
 }
 
-export function viewPost(postId) {
-  return {
-    type: actions.VIEW_POST,
-    payload: postId,
-  }
-}
-
 export function updatePost(postID, newValue) {
   return {
     type: actions.UPDATE_POST,
@@ -28,5 +21,19 @@ export function updatePost(postID, newValue) {
       postID,
       newValue
     },
+  }
+}
+
+export function addComment(comment) {
+  return {
+    type: actions.ADD_COMMENT,
+    payload: comment,
+  }
+}
+
+export function deleteComment(commentId) {
+  return {
+    type: actions.DELETE_COMMENT,
+    payload: commentId,
   }
 }
