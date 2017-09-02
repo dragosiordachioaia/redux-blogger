@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Input } from 'semantic-ui-react'
 
 export default class PostForm extends Component{
   constructor() {
@@ -29,20 +30,20 @@ export default class PostForm extends Component{
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
+      <form className="post-form" onSubmit={this.onSubmit}>
+        <Input
           type="text"
           value={this.state.title}
           onChange={(event) => this.setState({title: event.target.value})}
           placeholder="Post title here"
         />
-        <input
+        <Input
           type="text"
           value={this.state.content}
           onChange={(event) => this.setState({content: event.target.value})}
           placeholder="Post content here"
         />
-        <button type="submit">Create Post</button>
+        <Button type="submit">Create Post</Button>
       </form>
     );
   }

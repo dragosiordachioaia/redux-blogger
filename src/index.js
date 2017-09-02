@@ -6,6 +6,7 @@ import reducers from './reducers';
 
 import './index.css';
 import App from './App';
+import 'semantic-ui-css/semantic.min.css';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
