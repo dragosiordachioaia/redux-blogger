@@ -3,23 +3,29 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/post-actions';
 
+import NewPostForm from '../components/newPostForm';
+import PostItem from '../components/postItem';
+
 class PostsList extends Component {
   constructor() {
     super();
-
-    this.createNewPost = this.createNewPost.bind(this);
-  }
-
-  createNewPost() {
-    console.log('props = ', this.props);
-    this.props.addPost({
-      title: 'my first post' + String(Math.random()),
-      content: 'this is the content of the first post',
-    });
+    this.displayPostsList = this.displayPostsList.bind(this);
+    this.deletePost = this.deletePost.bind(this);
   }
 
   displayPostsList(posts) {
-    return posts.map(post => <p key={post.title}> { post.title } </p>);
+    return posts.map(
+      post =>
+        <PostItem
+          post={post}
+          key={post.title}
+          deletePost={this.deletePost}
+        />
+    );
+  }
+
+  deletePost(postID) {
+    this.props.deletePost(postID);
   }
 
   render() {
@@ -31,7 +37,9 @@ class PostsList extends Component {
     }
     return (
       <div>
-        <button onClick={this.createNewPost}>Add Post</button>
+        <NewPostForm
+          onSubmit={this.props.addPost}
+        />
         {list}
       </div>
     );
@@ -45,7 +53,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addPost: actions.addPost }, dispatch);
+  return bindActionCreators({ addPost: actions.addPost, deletePost: actions.deletePost }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsList);
