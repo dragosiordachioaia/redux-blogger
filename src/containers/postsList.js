@@ -11,6 +11,7 @@ class PostsList extends Component {
     super();
     this.displayPostsList = this.displayPostsList.bind(this);
     this.deletePost = this.deletePost.bind(this);
+    this.viewPost = this.viewPost.bind(this);
   }
 
   displayPostsList(posts) {
@@ -20,8 +21,13 @@ class PostsList extends Component {
           post={post}
           key={post.title}
           deletePost={this.deletePost}
+          viewPost={this.viewPost}
         />
     );
+  }
+
+  viewPost(postId) {
+    console.log('PostsList::viewPost() postId = ', postId);
   }
 
   deletePost(postID) {
