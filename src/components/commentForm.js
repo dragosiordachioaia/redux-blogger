@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Input } from 'semantic-ui-react';
+import { Button, Input, Form, Label, TextArea } from 'semantic-ui-react';
 
 export default class CommentForm extends Component{
   constructor() {
@@ -32,34 +32,35 @@ export default class CommentForm extends Component{
 
   render() {
     return (
-      <form onSubmit={this.onSubmit} className="comment-form">
-        <Input
-          label="Title"
-          type="text"
-          value={this.state.title}
-          onChange={(event) => this.setState({title: event.target.value})}
-          placeholder="Post title here"
-        />
-        <br />
-        <Input
-          label="Content"
-          type="text"
-          value={this.state.content}
-          onChange={(event) => this.setState({content: event.target.value})}
-          placeholder="Post content here"
-        />
-        <br />
-
-        <Input
-          label="Author"
-          type="text"
-          value={this.state.author}
-          onChange={(event) => this.setState({author: event.target.value})}
-          placeholder="Your name here"
-        />
-        <br />
-        <Button type="submit">Submit Comment</Button>
-      </form>
+      <Form className="comment-form" onSubmit={this.onSubmit}>
+        <Form.Field>
+          <Label pointing="below">Choose a title</Label>
+          <Input
+            type="text"
+            value={this.state.title}
+            onChange={(event) => this.setState({title: event.target.value})}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Label pointing="below">Choose a content</Label>
+          <TextArea
+            type="text"
+            value={this.state.content}
+            onChange={(event) => this.setState({content: event.target.value})}
+            label="Content"
+          />
+        </Form.Field>
+        <Form.Field>
+          <Label pointing="below">Choose an author</Label>
+          <Input
+            type="text"
+            value={this.state.content}
+            onChange={(event) => this.setState({author: event.target.value})}
+            label="Content"
+          />
+        </Form.Field>
+        <Button type="submit" primary>Add Comment</Button>
+      </Form>
     );
   }
 }

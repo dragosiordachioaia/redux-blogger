@@ -6,7 +6,7 @@ export default class PageHeader extends Component {
     return (
       <header>
         <h2>good morning.</h2>
-        <img src={headerImage} alt="Header - mountains"/>
+        {/* <img src={headerImage} alt="Header - mountains"/> */}
       </header>
     );
   }

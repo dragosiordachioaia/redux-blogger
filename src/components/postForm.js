@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Button, Input } from 'semantic-ui-react';
+import { Button, Form, Input, Label, TextArea } from 'semantic-ui-react';
 
 export default class PostForm extends Component{
   constructor() {
     super();
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      title: "first title",
-      content: "lorem ipsum dolor",
+      title: "",
+      content: "",
     }
   }
 
@@ -30,21 +30,27 @@ export default class PostForm extends Component{
 
   render() {
     return (
-      <form className="post-form" onSubmit={this.onSubmit}>
-        <Input
-          type="text"
-          value={this.state.title}
-          onChange={(event) => this.setState({title: event.target.value})}
-          placeholder="Post title here"
-        />
-        <Input
-          type="text"
-          value={this.state.content}
-          onChange={(event) => this.setState({content: event.target.value})}
-          placeholder="Post content here"
-        />
+      <Form className="post-form" onSubmit={this.onSubmit}>
+        <Form.Field>
+          <Label pointing="below">Choose a title</Label>
+          <Input
+            type="text"
+            value={this.state.title}
+            onChange={(event) => this.setState({title: event.target.value})}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Label pointing="below">Choose a content</Label>
+          <TextArea
+            type="text"
+            value={this.state.content}
+            onChange={(event) => this.setState({content: event.target.value})}
+            placeholder="Post content here"
+            label="Content"
+          />
+        </Form.Field>
         <Button type="submit">Create Post</Button>
-      </form>
+      </Form>
     );
   }
 }

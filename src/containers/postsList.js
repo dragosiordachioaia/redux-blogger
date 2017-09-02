@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/actions';
 
-import PostForm from '../components/postForm';
 import PostItem from '../components/postItem';
 
 class PostsList extends Component {
@@ -37,9 +36,6 @@ class PostsList extends Component {
     }
     return (
       <div>
-        <PostForm
-          onSubmit={this.props.addPost}
-        />
         {list}
       </div>
     );

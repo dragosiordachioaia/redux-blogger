@@ -27,7 +27,7 @@ header h2 {
   text-align: center;
   top: 10vw;
   width: 100%;
-  position: absolute;
+  /*position: absolute;*/
   font-family: Lobster;
   font-size: 4em;
   color: #3c4e62;

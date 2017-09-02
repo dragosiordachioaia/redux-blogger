@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
+import { Button, Input, Icon, Header, Divider } from 'semantic-ui-react';
+
 import * as actions from '../actions/actions';
 
 import CommentForm from '../components/commentForm';
@@ -58,12 +60,17 @@ class PostDetails extends Component {
     return (
       <div>
         <Link to="/">
-          Back to home
+          <Button secondary>
+            <Icon name='chevron left' />
+            Go to Home Page
+          </Button>
         </Link>
-        <h2>{activePost.title}</h2>
+        <Divider horizontal>Post</Divider>
+        <Header as="h2">{activePost.title}</Header>
         <p>{activePost.content}</p>
-        <hr />
+        <Divider horizontal>Add a comment</Divider>
         <CommentForm onSubmit={this.addCommentToPost}/>
+        <Divider horizontal>Comments</Divider>
         {this.displayComments(this.props.comments)}
       </div>
     );
